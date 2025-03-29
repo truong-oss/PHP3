@@ -11,13 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('posts', function (Blueprint $table) {
-            $table->id();
-            $table->string('tieu_de');         // Tiêu đề bài viết
-        $table->text('bai_viet');         // Nội dung bài viết
-       
-        $table->boolean('trang_thai')->default(true);
-            $table->timestamps();
+        Schema::table('customers', function (Blueprint $table) {
+            //
+            $table->softDeletes(); // Thêm cột deleted_at
+
         });
     }
 
@@ -26,6 +23,9 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('posts');
+        Schema::table('customers', function (Blueprint $table) {
+            //
+            $table->dropSoftDeletes(); // Xóa cột deleted_at nếu rollback
+        });
     }
 };

@@ -20,7 +20,7 @@
               <a class="nav-link active" aria-current="page" href="{{ route('admin.products.index') }}">Sản phẩm</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Danh mục </a>
+              <a class="nav-link" href="{{ route('admin.categories.index') }}">Danh mục </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Người dùng</a>

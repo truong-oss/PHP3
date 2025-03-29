@@ -4,22 +4,23 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Category extends Model
 {
-    // để sd được factory tạo dữ liệu mẫu t cần phải sử dụng thư viện
-    use HasFactory;
-    // qquy định model này thao tcasc với bảng nào 
+    // để sd đc facories tạo dữ liệu mẫu ta cần phải sd thư viện 
+    use HasFactory,SoftDeletes;
+    // quy định model này thao tac với bảng nào
     protected $table = 'categories';
-    //các trường trog bảng đều phải đưa vào fillable
+    // các trường trong bảng đều phải đưa vào fillable
     protected $fillable = [
         'ten_danh_muc',
         'trang_thai'
     ];
-    //tạo model của product
-    //tạo mối liên hệ vs product
-    public function product()
-    {
-        return $this->hasMany(Product::class, 'category_id');
+    protected $date = ['deleted_at'];
+
+    // tạo liên hệ với products
+    public function products(){
+        return $this->hasMany(Product::class,'category_id');
     }
 }
