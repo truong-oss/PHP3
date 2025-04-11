@@ -21,3 +21,6 @@ php artisan make:factory PostFactory
 
 
 php artisan make:controller TenController
+
+php artisan make:controller Api/ProductController --api(vietapi)
+php artisan route:list//câu lệnh kt xem cso bao nh route

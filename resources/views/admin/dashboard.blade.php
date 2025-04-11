@@ -26,7 +26,10 @@
               <a class="nav-link" href="#">Người dùng</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link disabled" aria-disabled="true">Cài đặt</a>
+              <form action="{{ route('logout') }}" method="POST">
+                @csrf
+                <button type="submit" class="btn btn-danger">Đăng xuất</button>
+            </form>
             </li>
           </ul>
     </div>

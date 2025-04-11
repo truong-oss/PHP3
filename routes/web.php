@@ -10,16 +10,30 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ReviewsController;
 use Illuminate\Support\Facades\Route;
 // use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
-
+use App\Http\Controllers\AuthController;
 Route::get('/', function () {
     return view('welcome');
+});
+
+
+Route::controller(AuthController::class)->group(function () {
+    Route::get('/login',[AuthController::class,'login'])->name('login');
+    Route::post('/loginpost',[AuthController::class,'loginpost'])->name('loginpost');
+
+    
+    
+    Route::get('/showregister', [AuthController::class,'showregister'])->name('register');
+    Route::post('/register', [AuthController::class,'register'])->name('register-post');
+
+    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+   
 });
 // Route::get('/products', [ProductController::class, 'index']);
 
 // Route::prefix('admin')->group(function () {
 //     Route::get('/products', [ProductController::class, 'index'])->name('admin.products.index');
 // });
-Route::prefix('admin')->name('admin.')->group(function (){
+Route::prefix('admin')->middleware('auth', 'admin')->name('admin.')->group(function (){
     //các đường dẫn trg admin
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     //route quản lí sản sphamr

@@ -14,22 +14,22 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        User::factory(10)->create();
 
         // User::factory()->create([
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
-        $this->call([
-            // CategorySeeder::class,
-            //những clas seeder muốn chạy
-            productSeeder::class,
-            PostSeeder::class,
-            ReviewSeeder::class,
-            ContactSeeder::class,
-            BannerSeeder::class,
-            CustomerSeeder::class
+        // $this->call([
+        //     // CategorySeeder::class,
+        //     //những clas seeder muốn chạy
+        //     productSeeder::class,
+        //     PostSeeder::class,
+        //     ReviewSeeder::class,
+        //     ContactSeeder::class,
+        //     BannerSeeder::class,
+        //     CustomerSeeder::class
 
-        ]);
+        // ]);
     }
 }
